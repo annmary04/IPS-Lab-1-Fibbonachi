@@ -1,26 +1,30 @@
 using System;
-public static class LoopTasks
+public class Program
 {
-    public static int SumOfFirstNFibonacciNumbers(int n)
+    public static void Main()
     {
-        int CurrentValue = 1;
-        int PrevValue = 0;
-        int Sum = 1;
-        int CurrentSum;
-        int i = 2;
-
-        if (n == 0) Sum = 0;
-        if (n == 1) Sum = 0;
-
-        while (i < n)
+        int firstNumber = 0, 
+        SecondNumber = 1,
+        nextNumber,
+        numberOfElements;
+        Console.Write("Number of elements: ");
+        numberOfElements = int.Parse(Console.ReadLine());
+        if(numberOfElements < 2)
         {
-            CurrentSum = PrevValue + CurrentValue;
-            PrevValue = CurrentValue;
-            CurrentValue = CurrentSum;
-            Sum += CurrentValue;
-            i++;
+            Console.Write("Print number greater than two");
+        }
+        else
+        {
+            Console.Write(firstNumber + " " + SecondNumber + " ");
+            for(int i = 2; i < numberOfElements; i++)
+            {
+                nextNumber = firstNumber + SecondNumber;
+                Console.Write(nextNumber + " ");
+                firstNumber = SecondNumber;
+                SecondNumber = nextNumber;
+            }
         }
 
-        return Sum;
+        Console.ReadKey();
     }
 }
